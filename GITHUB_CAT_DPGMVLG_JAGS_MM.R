@@ -50,32 +50,32 @@ true_lab_Cat <- as.numeric(cats$Sex)    # Use the 'class' column as the true lab
 ###########################################################################################################
 
 # 1. Summary statistics
-summary(cat_data)
+summary(Cat_data)
 
 # 2. Check for missing values
-sum(is.na(cat_data))
+sum(is.na(Cat_data))
 
 # 3. Distribution of each feature
 par(mfrow=c(1, 2))  # Adjusted for the number of features (cats dataset has 4 features)
-for (i in 1:ncol(cat_data)) {
-  hist(cat_data[, i], main=colnames(cat_data)[i], xlab=colnames(cat_data)[i], col="lightblue", border="black")
+for (i in 1:ncol(Cat_data)) {
+  hist(Cat_data[, i], main=colnames(Cat_data)[i], xlab=colnames(Cat_data)[i], col="lightblue", border="black")
 }
 
 # 4. Pairwise scatter plots
-pairs(cat_data, main="Cats Data - Pairwise Scatter Plots", pch=21, bg=c("red", "green3")[true_lab_Cat])
+pairs(Cat_data, main="Cats Data - Pairwise Scatter Plots", pch=21, bg=c("red", "green3")[true_lab_Cat])
 
 # 5. Boxplots for each feature by 'Sex'
 # Add normalized data to the original data frame
-cats_normalized <- as.data.frame(cat_data)
+cats_normalized <- as.data.frame(Cat_data)
 cats_normalized$Sex <- as.factor(cats$Sex)
 
 par(mfrow=c(1, 2))  # Reset the plotting area for boxplots
-for (i in 1:ncol(cat_data)) {
-  boxplot(cat_data[, i] ~ cats_normalized$Sex, main=colnames(cat_data)[i], xlab="Sex", ylab=colnames(cat_data)[i], col="lightblue")
+for (i in 1:ncol(Cat_data)) {
+  boxplot(Cat_data[, i] ~ cats_normalized$Sex, main=colnames(Cat_data)[i], xlab="Sex", ylab=colnames(Cat_data)[i], col="lightblue")
 }
 
 # 6. Correlation matrix
-cor_matrix <- cor(cat_data)
+cor_matrix <- cor(Cat_data)
 print(cor_matrix)
 
 # 7. Visualizing correlations with heatmap
@@ -360,9 +360,6 @@ dp <- Fit(dp, its = 1000)
 DPMVN_time_Cat <- toc()
 # Extract clusters 
 dpMVN_clusters_Cat <- as.numeric(dp$clusterLabels)
-new <- 1:2
-old <- c(2,1)
-dpMVN_clusters_Cat[dpMVN_clusters_Cat %in% old] <- new[match(dpMVN_clusters_Cat, old, nomatch = 0)]
 print(dpMVN_clusters_Cat)
 table(true_lab_Cat, dpMVN_clusters_Cat)
 
