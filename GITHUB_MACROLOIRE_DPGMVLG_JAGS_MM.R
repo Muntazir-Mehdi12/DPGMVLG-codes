@@ -52,22 +52,22 @@ summary(macro_data)
 sum(is.na(macro_data))
 
 # 3. Distribution of each feature
-par(mfrow=c(4, 3))  # Set up the plotting area for 2 histograms
+par(mfrow=c(1, 2))  # Set up the plotting area for 2 histograms
 for (i in 1:ncol(macro_data)) {
   hist(macro_data[, i], main=colnames(macro_data)[i], xlab=colnames(macro_data)[i], col="lightblue", border="black")
 }
 
 # 4. Pairwise scatter plots
-pairs(macro_data, main="Corvus Data - Pairwise Scatter Plots", pch=21, bg=c("red", "green3", "blue", "yellow")[true_lab_macro])
+pairs(macro_data, main="Macroloire Data - Pairwise Scatter Plots", pch=21, bg=c("red", "green3", "blue", "yellow")[true_lab_macro])
 
 # 5. Boxplots for each feature by Diet type
 # Add normalized data to the original data frame
 Cor_normalized <- as.data.frame(macro_data)
-Cor_normalized$Order <- macroloire$taxo$Order
+Cor_normalized$Morphoregion <- macroloire$envir$Morphoregion
 
-par(mfrow=c(4, 3))  # Reset the plotting area for boxplots
+par(mfrow=c(1, 2))  # Reset the plotting area for boxplots
 for (i in 1:ncol(macro_data)) {
-  boxplot(macro_data[, i] ~ Cor_normalized$Order, main=colnames(macro_data)[i], xlab="Habitat", ylab=colnames(macro_data)[i], col="lightblue")
+  boxplot(macro_data[, i] ~ Cor_normalized$Morphoregion, main=colnames(macro_data)[i], xlab="Morphoregion", ylab=colnames(macro_data)[i], col="lightblue")
 }
 
 # 6. Correlation matrix
@@ -97,6 +97,14 @@ barplot(skewness_values, main="Skewness of Each Feature", xlab="Features", ylab=
 
 # Plot kurtosis values
 barplot(kurtosis_values, main="Kurtosis of Each Feature", xlab="Features", ylab="Kurtosis", col="lightblue", las=1)
+
+#Combined skewness and kurtosis
+combined_data <- as.vector(as.matrix(macro_scaled_data))
+total_skewness <- skewness(combined_data)
+total_skewness
+
+total_kurtosis <- kurtosis(combined_data)
+total_kurtosis
 
 #outliers
 total_outliers1 <- 0
