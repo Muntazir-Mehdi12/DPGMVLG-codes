@@ -255,17 +255,6 @@ z_mode_pap
 plot(pap_scaled_data, col= z_mode_pap, pch=16, main="Data Points by Cluster")
 legend("topright", legend=unique(z_mode_pap), col=unique(z_mode_pap), pch=16, title="Cluster")
 table( true_lab_pap , z_mode_pap)
-
-# To switch to the same labels in the true clustering
-#new <- 1:2
-#old <- c(2,1)
-#z_mode_pap[z_mode_pap %in% old] <- new[match(z_mode_pap,old,nomatch = 0)]
-
-plot(pap_scaled_data, col= z_mode_pap, pch=16, main="Data Points by Cluster")
-legend("topright", legend=unique(z_mode_pap), col=unique(z_mode_pap), pch=16, title="Cluster")
-
-# To switch to the same labels in the true clustering
-table( true_lab_pap , z_mode_pap)
 kappa2(data.frame(rater1 = true_lab_pap, rater2 = z_mode_pap))
 
 calculate_dp_Gmvlg_clustering_metrics <- function(datapap_1, true_clusters_pap) {
