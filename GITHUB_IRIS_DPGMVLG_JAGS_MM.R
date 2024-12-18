@@ -370,9 +370,6 @@ DPMVN_time_iris <- toc()
 dp
 # Extract clusters 
 dpMVN_clusters_iris <- as.numeric(dp$clusterLabels)
-#new <- 1:2
-#old <- c(2,1)
-#dpMVN_clusters_iris[dpMVN_clusters_iris %in% old] <- new[match(dpMVN_clusters_iris, old, nomatch = 0)]
 print(dpMVN_clusters_iris)
 table(true_lab_iris, dpMVN_clusters_iris)
 
@@ -481,9 +478,6 @@ wb <- createWorkbook()
 # Add each metric as a separate sheet in the workbook
 addWorksheet(wb, "Kappa")
 writeData(wb, sheet = "Kappa", kappa_table_iris)
-
-addWorksheet(wb, "Silhouette Score")
-writeData(wb, sheet = "Silhouette Score", Silhouette_table_iris)
 
 addWorksheet(wb, "ARI")
 writeData(wb, sheet = "ARI", ARI_table_iris)
