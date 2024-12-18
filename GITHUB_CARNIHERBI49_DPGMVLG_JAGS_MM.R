@@ -50,32 +50,32 @@ true_lab_Carni=as.numeric(carniherbi49$tab2[,1])
 ###########################################################################################################
 
 # 1. Summary statistics
-summary(carni_data)
+summary(Carni_data)
 
 # 2. Check for missing values
-sum(is.na(carni_data))
+sum(is.na(Carni_data))
 
 # 3. Distribution of each feature
 par(mfrow=c(2, 2))  # Adjusted for the number of features
-for (i in 1:ncol(carni_data)) {
-  hist(carni_data[, i], main=colnames(carni_data)[i], xlab=colnames(carni_data)[i], col="lightblue", border="black")
+for (i in 1:ncol(Carni_data)) {
+  hist(Carni_data[, i], main=colnames(Carni_data)[i], xlab=colnames(Carni_data)[i], col="lightblue", border="black")
 }
 
 # 4. Pairwise scatter plots
-pairs(carni_data, main="Carniherbi49 Data - Pairwise Scatter Plots", pch=21, bg=c("red", "green3", "blue")[true_lab_Carni])
+pairs(Carni_data, main="Carniherbi49 Data - Pairwise Scatter Plots", pch=21, bg=c("red", "green3", "blue")[true_lab_Carni])
 
 # 5. Boxplots for each feature by 'Weight Category'
 # Add normalized data to the original data frame
-mt_normalized <- as.data.frame(carni_data)
+mt_normalized <- as.data.frame(Carni_data)
 mt_normalized$am <- carniherbi49$tab2$clade
 
 par(mfrow=c(2, 2))  # Reset the plotting area for boxplots
-for (i in 1:ncol(carni_data)) {
-  boxplot(carni_data[, i] ~ mt_normalized$am, main=colnames(carni_data)[i], xlab="dietary Category", ylab=colnames(carni_data)[i], col="lightblue")
+for (i in 1:ncol(Carni_data)) {
+  boxplot(Carni_data[, i] ~ mt_normalized$am, main=colnames(Carni_data)[i], xlab="dietary Category", ylab=colnames(Carni_data)[i], col="lightblue")
 }
 
 # 6. Correlation matrix
-cor_matrix <- cor(carni_data)
+cor_matrix <- cor(Carni_data)
 print(cor_matrix)
 
 # 7. Visualizing correlations with heatmap
@@ -364,9 +364,6 @@ dp <- Fit(dp, its = 1000)
 DPMVN_time_Carni <- toc()
 # Extract clusters 
 dpMVN_clusters_Carni <- as.numeric(dp$clusterLabels)
-new <- c(2,3)
-old <- c(3,2)
-dpMVN_clusters_Carni[dpMVN_clusters_Carni %in% old] <- new[match(dpMVN_clusters_Carni, old, nomatch = 0)]
 print(dpMVN_clusters_Carni)
 table(true_lab_Carni, dpMVN_clusters_Carni)
 
