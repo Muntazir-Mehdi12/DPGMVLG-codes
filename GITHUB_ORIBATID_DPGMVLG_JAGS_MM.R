@@ -256,17 +256,6 @@ z_mode_orib
 plot(orib_scaled_data, col= z_mode_orib, pch=16, main="Data Points by Cluster")
 legend("topright", legend=unique(z_mode_orib), col=unique(z_mode_orib), pch=16, title="Cluster")
 table( true_lab_orib , z_mode_orib)
-
-# To switch to the same labels in the true clustering
-#new <- 1:2
-#old <- c(2,1)
-#z_mode_orib[z_mode_orib %in% old] <- new[match(z_mode_orib,old,nomatch = 0)]
-
-plot(orib_scaled_data, col= z_mode_orib, pch=16, main="Data Points by Cluster")
-legend("topright", legend=unique(z_mode_orib), col=unique(z_mode_orib), pch=16, title="Cluster")
-
-# To switch to the same labels in the true clustering
-table( true_lab_orib , z_mode_orib)
 kappa2(data.frame(rater1 = true_lab_orib, rater2 = z_mode_orib))
 
 calculate_dp_Gmvlg_clustering_metrics <- function(dataorib_1, true_clusters_orib) {
