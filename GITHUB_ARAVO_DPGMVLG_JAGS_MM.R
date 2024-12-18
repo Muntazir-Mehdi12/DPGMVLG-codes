@@ -252,16 +252,6 @@ z_mode_Aravo
 plot(Aravo_scaled_data, col= z_mode_Aravo, pch=16, main="Data Points by Cluster")
 legend("topright", legend=unique(z_mode_Aravo), col=unique(z_mode_Aravo), pch=16, title="Cluster")
 table( true_lab_Aravo , z_mode_Aravo)
-# To switch to the same labels in the true clustering
-new <- c(1,2)
-old <- c(2,1)
-z_mode_Aravo[z_mode_Aravo %in% old] <- new[match(z_mode_Aravo,old,nomatch = 0)]
-
-plot(Aravo_scaled_data, col= z_mode_Aravo, pch=16, main="Data Points by Cluster")
-legend("topright", legend=unique(z_mode_Aravo), col=unique(z_mode_Aravo), pch=16, title="Cluster")
-
-# To switch to the same labels in the true clustering
-table( true_lab_Aravo , z_mode_Aravo)
 kappa2(data.frame(rater1 = true_lab_Aravo, rater2 = z_mode_Aravo))
 
 calculate_dp_Gmvlg_clustering_metrics <- function(dataAravo_1, true_clusters_Aravo) {
@@ -376,9 +366,6 @@ dp <- Fit(dp, its = 1000)
 DPMVN_time_Aravo <- toc()
 # Extract clusters 
 dpMVN_clusters_Aravo <- as.numeric(dp$clusterLabels)
-#new <- 1:2
-#old <- c(2,1)
-#dpMVN_clusters_Aravo[dpMVN_clusters_Aravo %in% old] <- new[match(dpMVN_clusters_Aravo, old, nomatch = 0)]
 print(dpMVN_clusters_Aravo)
 table(true_lab_Aravo, dpMVN_clusters_Aravo)
 
