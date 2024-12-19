@@ -198,8 +198,8 @@ model {
   }
    for (g in 1:G) {
     for (j in 1:D) {
-       mu_g[j, g] ~ dgamma(11,13)        
-       lambda_g[j, g] ~ dgamma(13,13)
+       mu_g[j, g] ~ dgamma(12,13)        
+       lambda_g[j, g] ~ dgamma(1,3)
     }
      alpha[g] ~ dgamma(2,6)
    }
