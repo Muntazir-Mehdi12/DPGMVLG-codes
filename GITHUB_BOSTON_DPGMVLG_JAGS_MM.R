@@ -364,14 +364,14 @@ table(true_lab_Bos, mclust_clusters_Bos)
 # Bayesian Clustering using Dirichlet Process Gaussian Mixture Model (DPMVN)
 # Create Dirichlet Process object with adjusted concentration parameter
 set.seed(23)
-dp <- DirichletProcessMvnormal(Bos_scaled_data, alphaPriors =  c(1,500))
+dp <- DirichletProcessMvnormal(Bos_scaled_data)
 tic("DPMVN Runtime")
-dp <- Fit(dp, its = 100)
+dp <- Fit(dp, its = 1000)
 DPMVN_time_Bos <- toc()
 # Extract clusters 
 dpMVN_clusters_Bos <- as.numeric(dp$clusterLabels)
-new <- 1:2
-old <- c(2,1)
+new <- c(2,13)
+old <- c(13,2)
 dpMVN_clusters_Bos[dpMVN_clusters_Bos %in% old] <- new[match(dpMVN_clusters_Bos, old, nomatch = 0)]
 print(dpMVN_clusters_Bos)
 table(true_lab_Bos, dpMVN_clusters_Bos)
