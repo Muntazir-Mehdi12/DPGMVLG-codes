@@ -311,10 +311,10 @@ kmeans_result_Bos <- eclust(Bos_scaled_data, "kmeans", G, graph = FALSE)
 kmeans_time_Bos <- toc()
 kmeans_clusters_Bos <- kmeans_result_Bos$cluster
 table(true_lab_Bos, kmeans_clusters_Bos)
-new <- 1:2
-old <- c(2,1)
-kmeans_clusters_Bos[kmeans_clusters_Bos %in% old] <- new[match(kmeans_clusters_Bos, old, nomatch = 0)]
-table(true_lab_Bos, kmeans_clusters_Bos)
+#new <- 1:2
+#old <- c(2,1)
+#kmeans_clusters_Bos[kmeans_clusters_Bos %in% old] <- new[match(kmeans_clusters_Bos, old, nomatch = 0)]
+#table(true_lab_Bos, kmeans_clusters_Bos)
 
 # CLARA clustering
 tic("CLARA Runtime")
@@ -325,7 +325,7 @@ table(true_lab_Bos, clara_clusters_Bos)
 #new <- 1:2
 #old <- c(2,1)
 #clara_clusters_Bos[clara_clusters_Bos %in% old] <- new[match(clara_clusters_Bos, old, nomatch = 0)]
-table(true_lab_Bos, clara_clusters_Bos)
+#table(true_lab_Bos, clara_clusters_Bos)
 
 # PAM clustering
 tic("PAM Runtime")
@@ -336,7 +336,7 @@ table(true_lab_Bos, pam_clusters_Bos)
 #new <- 1:2
 #old <- c(2,1)
 #pam_clusters_Bos[pam_clusters_Bos %in% old] <- new[match(pam_clusters_Bos, old, nomatch = 0)]
-table(true_lab_Bos, pam_clusters_Bos)
+#table(true_lab_Bos, pam_clusters_Bos)
 
 # Hierarchical clustering
 tic("Hierarchical Runtime")
@@ -347,7 +347,7 @@ table(true_lab_Bos, hclust_clusters_Bos)
 #new <- 1:2
 #old <- c(2,1)
 #hclust_clusters_Bos[hclust_clusters_Bos %in% old] <- new[match(hclust_clusters_Bos, old, nomatch = 0)]
-table(true_lab_Bos, hclust_clusters_Bos)
+#table(true_lab_Bos, hclust_clusters_Bos)
 
 # Model-based clustering
 tic("Model-based Runtime")
