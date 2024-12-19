@@ -58,7 +58,7 @@ for (i in 1:ncol(Ais_data)) {
 }
 
 # 4. Pairwise scatter plots
-pairs(Ais_data, main="AIS Data - Pairwise Scatter Plots", pch=21, bg=c("red", "green3")[true_lab])
+pairs(Ais_data, main="AIS Data - Pairwise Scatter Plots", pch=21, bg=c("red", "green3")[true_lab_Ais])
 
 # 5. Boxplots for each feature by sex
 # Add normalized data to the original data frame
@@ -357,9 +357,6 @@ dp <- Fit(dp, its = 1000)
 DPMVN_time_Ais <- toc()
 # Extract clusters 
 dpMVN_clusters_Ais <- as.numeric(dp$clusterLabels)
-new <- c(1,3)
-old <- c(3,1)
-dpMVN_clusters_Ais[dpMVN_clusters_Ais %in% old] <- new[match(dpMVN_clusters_Ais, old, nomatch = 0)]
 print(dpMVN_clusters_Ais)
 table(true_lab_Ais, dpMVN_clusters_Ais)
 
