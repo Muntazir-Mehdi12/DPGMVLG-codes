@@ -62,7 +62,7 @@ for (i in 1:ncol(wine_data)) {
 }
 
 # 4. Pairwise scatter plots
-pairs(wine_data, main="Wine Data - Pairwise Scatter Plots", pch=21, bg=c("red", "green3", "blue")[true_lab])
+pairs(wine_data, main="Wine Data - Pairwise Scatter Plots", pch=21, bg=c("red", "green3", "blue")[true_lab_wine])
 
 # 5. Boxplots for each feature by 'Type'
 # Add normalized data to the original data frame
@@ -369,9 +369,6 @@ dp <- Fit(dp, its = 1000)
 DPMVN_time_wine <- toc()
 # Extract clusters 
 dpMVN_clusters_wine <- as.numeric(dp$clusterLabels)
-new <- 1:2
-old <- c(2,1)
-dpMVN_clusters_wine[dpMVN_clusters_wine %in% old] <- new[match(dpMVN_clusters_wine, old, nomatch = 0)]
 print(dpMVN_clusters_wine)
 table(true_lab_wine, dpMVN_clusters_wine)
 
