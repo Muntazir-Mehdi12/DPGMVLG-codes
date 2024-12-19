@@ -287,11 +287,7 @@ calculate_dp_Gmvlg_clustering_metrics <- function(dataLascaux_1, true_clusters_L
   results_list[["dp_Gmvlg"]] <- list(
     Table = table_result_Lascaux,
     Kappa = kappa_result_Lascaux$value,
-    Silhouette = mean(silhouette_result_Lascaux[, 3]),
     ARI = ari_result_Lascaux,
-    DB = db_result_Lascaux,
-    Dunn = dunn_result_Lascaux,
-    WCH = wch_result_Lascaux,
     NMI = nmi_result_Lascaux,
     CPU_RUN_TIME = run_time_Lascaux$callback_msg  # Store the runtime
   )
