@@ -491,9 +491,6 @@ wb <- createWorkbook()
 addWorksheet(wb, "Kappa")
 writeData(wb, sheet = "Kappa", kappa_table_Lascaux)
 
-addWorksheet(wb, "Silhouette Score")
-writeData(wb, sheet = "Silhouette Score", Silhouette_table_Lascaux)
-
 addWorksheet(wb, "ARI")
 writeData(wb, sheet = "ARI", ARI_table_Lascaux)
 
