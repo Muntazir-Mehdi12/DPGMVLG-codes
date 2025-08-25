@@ -468,7 +468,7 @@ for (i in seq_along(gini_values)) {
   run_time_VA <- toc()
   
   if (inherits(res, "try-error") || is.null(res)) {
-    cat("  ❌ Error or invalid clustering result\n")
+    cat("  Error or invalid clustering result\n")
     kappa_scores[i] <- NA
   } else {
     cluster_labels <- cutree(res, k = k)
@@ -481,7 +481,7 @@ for (i in seq_along(gini_values)) {
     
     kappa_result <- kappa2(data.frame(rater1 = true_lab_VA, rater2 = aligned_labels))
     kappa_scores[i] <- kappa_result$value
-    cat("  ✅ Kappa:", kappa_result$value, "\n")
+    cat("  Kappa:", kappa_result$value, "\n")
   }
 }
 
@@ -697,3 +697,4 @@ num_rows_with_outliers <- sum(rows_with_outliers)
 
 # Print the result
 print(paste("Number of rows with at least one outlier:", num_rows_with_outliers))
+
