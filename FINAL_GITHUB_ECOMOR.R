@@ -368,10 +368,6 @@ tic("DPMVN Runtime")
 dp <- Fit(dp, its = 1000)
 DPMVN_time_Ecomor <- toc()
 
-# Extract clusters 
-dpMVN_clusters_Ecomor <- as.numeric(dp$clusterLabels)
-table(true_lab_Ecomor, dpMVN_clusters_Ecomor)
-
 #old way
 new <- c(1,5)
 old <- c(5,1)
@@ -736,3 +732,4 @@ num_rows_with_outliers <- sum(rows_with_outliers)
 
 # Result
 print(paste("Number of rows with at least one outlier:", num_rows_with_outliers))
+
