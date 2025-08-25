@@ -214,7 +214,7 @@ calculate_dp_Gmvlg_clustering_metrics <- function(data_1, true_clusters, z_mode)
     Kappa = kappa_result$value,
     ARI = ari_result,
     NMI = nmi_result,
-    CPU_RUN_TIME = run_time_pap$callback_msg  # Store the runtime
+    CPU_RUN_TIME = run_time_pap$callback_msg 
   )
   return(results_list)
 }
@@ -320,7 +320,7 @@ table(true_lab_pap, mclust_clusters_pap)
 # Bayesian Clustering using Dirichlet Process Multivariate Normal Distribution (DPMVN)
 #-------------------------------------------------------------------------------------#
 
-# Create Dirichlet Process object with adjusted concentration parameter
+# Dirichlet Process object with adjusted concentration parameter
 set.seed(23)
 dp <- DirichletProcessMvnormal(pap_scaled_data, alphaPriors = c(6,22))
 tic("DPMVN Runtime")
@@ -354,7 +354,7 @@ calculate_clustering_metricspap_2 <- function(datapap_2, true_clusters_pap, esti
       Kappa = kappa_result_pap$value,
       ARI = ari_result_pap,
       NMI = nmi_result_pap,
-      CPU_RUN_TIME = times_list[[method_name]]$callback_msg  # Store the runtime
+      CPU_RUN_TIME = times_list[[method_name]]$callback_msg 
     )
   }
   return(results_list)
@@ -385,7 +385,7 @@ times_list_pap <- list(
 clustering_metricspap_2 <- calculate_clustering_metricspap_2(datapap_2 = pap_scaled_data, true_clusters_pap = true_lab_pap, estimated_clusters_pap_list = cluster_result_pap, times_list = times_list_pap)
 
 #-----------------------#
-# Printing the results 
+#        Results 
 #-----------------------#
 for (method_name in names(clustering_metricspap_2)) {
   cat("\n", method_name, " Clustering Results:\n", sep="")
@@ -455,7 +455,7 @@ for (i in seq_along(gini_values)) {
   run_time_pap <- toc()
   
   if (inherits(res, "try-error") || is.null(res)) {
-    cat("  ❌ Error or invalid clustering result\n")
+    cat("  Error or invalid clustering result\n")
     kappa_scores[i] <- NA
   } else {
  
@@ -471,7 +471,7 @@ for (i in seq_along(gini_values)) {
     
     kappa_result <- kappa2(data.frame(rater1 = true_lab_pap, rater2 = permuted_labels))
     kappa_scores[i] <- kappa_result$value
-    cat("  ✅ Kappa:", kappa_result$value, "\n")
+    cat("  Kappa:", kappa_result$value, "\n")
   }
 }
 
@@ -513,7 +513,7 @@ calculate_Genie_clustering_metrics <- function(data_1, true_clusters, cluster_la
     Kappa = kappa_result$value,
     ARI = ari_result,
     NMI = nmi_result,
-    CPU_RUN_TIME = run_time_pap_Genie$callback_msg  # Store the runtime
+    CPU_RUN_TIME = run_time_pap_Genie$callback_msg 
   )
   return(results_list)
 }
@@ -524,7 +524,7 @@ calculate_Genie_clustering_metrics <- function(data_1, true_clusters, cluster_la
 Genie_metricspap_1 <- calculate_Genie_clustering_metrics(data_1 = pap_scaled_data, true_clusters = true_lab_pap, cluster_labels = cluster_labels)
 
 #-----------------------#
-# Printing the results 
+#        Results 
 #-----------------------#
 for (Genie in names(Genie_metricspap_1)) {
   cat("\n", Genie, " Clustering Results:\n", sep="")
@@ -577,7 +577,7 @@ pairs(pap_data, main="PAP Data - Pairwise Scatter Plots", pch=21, bg=c("red", "g
 #-------------------------------------------------------#
 #           5. Boxplots for each feature 
 #-------------------------------------------------------#
-# Add normalized data to the original data frame
+# Normalized data to the original data frame
 Cor_normalized <- as.data.frame(pap_data)
 Cor_normalized$superfamille <- pap$taxo$superfamille
 
@@ -678,3 +678,4 @@ num_rows_with_outliers <- sum(rows_with_outliers)
 
 # Result
 print(paste("Number of rows with at least one outlier:", num_rows_with_outliers))
+
