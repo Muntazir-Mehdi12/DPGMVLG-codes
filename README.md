@@ -3,6 +3,6 @@ the performance of these methods based on some external validity indices.
 
 The codes are distributed in two categories: 
 
-1) DPGMVLG method / Classical methods / Genie method / Descriptive Analysis.
+1) DPGMVLG method / Classical methods / Genie method / Descriptive Analysis codes.
 
 2) DPMNIG codes.
